@@ -70,5 +70,7 @@
 
             insert   into   myTable(name,sex)   select name,sex  from  myTable where name='大华';
 
-
+9、mysql:查找出  name字段  所有重复的数据，删除重复数据，只留id最大的数据：
+	select name,count(*) as count from table_boss group by name having count>1;
+	delete from table_boss where id not in (select maxid from (select max(id) as maxid from table_boss group by name) b);
 
